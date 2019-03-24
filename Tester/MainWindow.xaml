@@ -1,0 +1,65 @@
+﻿<Window x:Class="Tester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tester"    
+        xmlns:onScreenKeyboard="clr-namespace:Gazaloglu.OnScreenKeyboard;assembly=Gazaloglu.OnScreenKeyboard"
+        mc:Ignorable="d"        
+        Topmost="True"         
+        ResizeMode="NoResize"       
+        Focusable="False"          
+        Title="MainWindow" Height="600" Width="1200">
+
+    <Grid Focusable="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition>
+                <RowDefinition.Style>
+                    <Style TargetType="{x:Type RowDefinition}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=KeyboardControl,Path=IsVisible}" Value="False">
+                                <Setter Property="Height" Value="0" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RowDefinition.Style>
+            </RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                <Label Content="Developed by İbrahim GAZALOĞLU" HorizontalAlignment="Center"/>
+                <Label Content="E-mail : ibrahimgazaloglu@gmail.com" HorizontalAlignment="Center"/>
+                <Label Content="Mobile : +90 534 958 6554" HorizontalAlignment="Center"/>
+                <Label Content="* Focus on text box to activate keyboard" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="339*"/>
+                        <ColumnDefinition Width="59*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Background="#EEE"
+                             TextAlignment="Center" 
+                             FontSize="36"
+                             Margin="5 15"/>
+
+                    <Button Content="Click here to get focus"
+                            Grid.Column="1"
+                            TabIndex="0"
+                            Margin="10 15"/>
+                </Grid>
+            </StackPanel>
+
+        </Grid>
+
+        <onScreenKeyboard:KeyboardControl VerticalAlignment="Bottom" Name="KeyboardControl" Grid.Row="1"/>
+    </Grid>
+
+</Window>
