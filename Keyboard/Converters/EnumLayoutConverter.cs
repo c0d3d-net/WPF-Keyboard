@@ -16,29 +16,19 @@ namespace Gazaloglu.OnScreenKeyboard.Converters
     {
         static readonly InitialLayout _initialLayout = new InitialLayout();
         static readonly NumericLayout _numericLayout = new NumericLayout();
-        static readonly CapitalLayout _capitalLayout = new CapitalLayout();
-        static readonly ShiftLayout   _shiftLayout   = new ShiftLayout();
+
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null) return _initialLayout;
+
 
             LayoutType type = (LayoutType)value;
 
-            switch (type)
-            {
-                case LayoutType.Numeric:
-                    return _numericLayout;
+            if (type == LayoutType.Numeric)
+                return _numericLayout;
 
-                case LayoutType.Capital:
-                    return _capitalLayout;
-
-                case LayoutType.Shift:
-                    return _shiftLayout;
-
-                default:
-                    return _initialLayout;
-            }
-
+            return _initialLayout;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

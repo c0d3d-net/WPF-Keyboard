@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:Tester"    
         xmlns:onScreenKeyboard="clr-namespace:Gazaloglu.OnScreenKeyboard;assembly=Gazaloglu.OnScreenKeyboard"
         mc:Ignorable="d"        
-        Topmost="True"         
         ResizeMode="NoResize"       
         Focusable="False"          
         Title="MainWindow" Height="600" Width="1200">

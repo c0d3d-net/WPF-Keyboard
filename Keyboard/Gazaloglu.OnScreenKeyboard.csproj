@@ -53,12 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapitalLayout.xaml.cs">
-      <DependentUpon>CapitalLayout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Command\ActionCommand.cs" />
     <Compile Include="Command\CommandFactory.cs" />
     <Compile Include="Command\ICommandFactory.cs" />
+    <Compile Include="Converters\EnumBackgroundConverter.cs" />
     <Compile Include="Converters\EnumLayoutConverter.cs" />
     <Compile Include="Enums\LayoutType.cs" />
     <Compile Include="KeyboardControl.xaml.cs">
@@ -68,14 +66,7 @@
       <DependentUpon>NumericLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ShiftLayout.xaml.cs">
-      <DependentUpon>ShiftLayout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel.cs" />
-    <Page Include="CapitalLayout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="InitialLayout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,10 +80,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NumericLayout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ShiftLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
