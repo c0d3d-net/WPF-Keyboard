@@ -96,9 +96,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Keyboard\Gazaloglu.OnScreenKeyboard.csproj">
+    <ProjectReference Include="..\Keyboard\WPFTouchscreenKeyboard.csproj">
       <Project>{dc7df753-b29a-4cc2-a459-bea0dd201524}</Project>
-      <Name>Gazaloglu.OnScreenKeyboard</Name>
+      <Name>WPFTouchscreenKeyboard</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

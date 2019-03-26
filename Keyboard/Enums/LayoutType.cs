@@ -5,7 +5,7 @@
  *
  */
 
-namespace Gazaloglu.OnScreenKeyboard.Enums
+namespace WPFTouchscreenKeyboard.Enums
 {
     public enum LayoutType
     {

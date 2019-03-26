@@ -11,7 +11,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 
-namespace Gazaloglu.OnScreenKeyboard
+namespace WPFTouchscreenKeyboard
 {
     /// <summary>
     /// Interaction logic for GazalogluXaml

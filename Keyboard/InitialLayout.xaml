@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="Gazaloglu.OnScreenKeyboard.InitialLayout"
+﻿<UserControl x:Class="WPFTouchscreenKeyboard.InitialLayout"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Gazaloglu.OnScreenKeyboard"
-             xmlns:converters="clr-namespace:Gazaloglu.OnScreenKeyboard.Converters"
+             xmlns:local="clr-namespace:WPFTouchscreenKeyboard"
+             xmlns:converters="clr-namespace:WPFTouchscreenKeyboard.Converters"
              Name="This"
              mc:Ignorable="d"  
              x:ClassModifier="internal"
@@ -289,6 +289,25 @@
             <ItemsControl Grid.Column="0"
                           Grid.IsSharedSizeScope="True" 
                           ItemsSource="{Binding KeySet5}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Margin="0 0 1 0"  
+                                Focusable="False"
+                                Style="{StaticResource DefaultButton}"
+                                Command="{Binding}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!--Other Buttons-->
+            <ItemsControl Grid.Column="2"
+                          Grid.IsSharedSizeScope="True" 
+                          ItemsSource="{Binding KeySet6}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Rows="1"/>

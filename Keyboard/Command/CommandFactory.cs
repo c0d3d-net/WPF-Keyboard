@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace Gazaloglu.OnScreenKeyboard.Command
+namespace WPFTouchscreenKeyboard.Command
 {
     class CommandFactory : ICommandFactory
     {

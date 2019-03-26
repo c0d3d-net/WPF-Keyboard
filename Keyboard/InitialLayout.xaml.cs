@@ -5,7 +5,7 @@
  *
  */
 
-namespace Gazaloglu.OnScreenKeyboard
+namespace WPFTouchscreenKeyboard
 {
     /// <summary>
     /// Interaction logic for GazalogluXaml

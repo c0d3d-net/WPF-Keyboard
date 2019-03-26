@@ -7,7 +7,7 @@
 
 using System.Windows.Controls;
 
-namespace Gazaloglu.OnScreenKeyboard
+namespace WPFTouchscreenKeyboard
 {
     /// <summary>
     /// Interaction logic for NumericLayout.xaml

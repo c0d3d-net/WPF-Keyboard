@@ -14,12 +14,12 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
-using Gazaloglu.OnScreenKeyboard.Annotations;
-using Gazaloglu.OnScreenKeyboard.Command;
-using Gazaloglu.OnScreenKeyboard.Enums;
+using WPFTouchscreenKeyboard.Annotations;
+using WPFTouchscreenKeyboard.Command;
+using WPFTouchscreenKeyboard.Enums;
 
 
-namespace Gazaloglu.OnScreenKeyboard
+namespace WPFTouchscreenKeyboard
 {
     public class ViewModel : INotifyPropertyChanged
     {
@@ -78,6 +78,8 @@ namespace Gazaloglu.OnScreenKeyboard
 
         #region PublicMembers
 
+        #region KeyboardVisibility
+
         public Visibility KeyboardVisibility
         {
             get => _keyboardVisibility;
@@ -88,6 +90,9 @@ namespace Gazaloglu.OnScreenKeyboard
             }
         }
 
+        #endregion
+
+        #region CurrentLayout
 
         public LayoutType CurrentLayout
         {
@@ -99,6 +104,8 @@ namespace Gazaloglu.OnScreenKeyboard
             }
         }
 
+        #endregion
+
         //KeyStates 
         public bool IsCapsLockLocked => Task.Run(() => _sim.InputDeviceState.IsTogglingKeyInEffect(VirtualKeyCode.CAPITAL)).Result;
         public bool IsShiftLocked => Task.Run(() => _sim.InputDeviceState.IsKeyDown(VirtualKeyCode.SHIFT)).Result;
@@ -109,16 +116,14 @@ namespace Gazaloglu.OnScreenKeyboard
         public List<ICommand> KeySet3 => IsShiftLocked ? _keySet3ShiftVersion : _keySet3;
         public List<ICommand> KeySet4 => IsShiftLocked ? _keySet4ShiftVersion : _keySet4;
         public List<ICommand> KeySet5 { get; }
+        public List<ICommand> KeySet6 { get; }
         public List<ICommand> NumericKeys { get; }
 
         #endregion
 
         public ViewModel()
         {
-
-
             _currentLayout = LayoutType.Initial;
-  
 
             #region Commands
             CmdCloseKeyboard = _commandFactory.CreateCommand(() => { KeyboardVisibility = Visibility.Collapsed; });
@@ -303,9 +308,25 @@ namespace Gazaloglu.OnScreenKeyboard
             KeySet5 = new List<ICommand>
             {
                 _commandFactory.CreateCommand(() => CurrentLayout = LayoutType.Numeric,ignorePostCommands: new [] {0,1}  /* Ignore SetProperLayoutCommand */),
-                _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.CONTROL)),
-                _commandFactory.CreateCommand(() => Debug.WriteLine("WIN")),
-                _commandFactory.CreateCommand(() => Debug.WriteLine("ALT")),
+                _commandFactory.CreateCommand(null, o => false),
+                _commandFactory.CreateCommand(null, o => false),
+                _commandFactory.CreateCommand(null, o => false),
+            };
+
+
+            #endregion
+
+            #region KeySet6
+
+            //KeySet6
+            KeySet6 = new List<ICommand>
+            {
+                _commandFactory.CreateCommand(null, o => false),
+                _commandFactory.CreateCommand(null, o => false),
+                _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.LEFT)),
+                _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.DOWN)),
+                _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.RIGHT)),
+                CmdCloseKeyboard
             };
 
 
@@ -383,6 +404,8 @@ namespace Gazaloglu.OnScreenKeyboard
             //Backspace
             CmdBackspaceKeyPress = _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.BACK));
 
+            #region CapsLock
+
             //CapsLock
             CmdCapsLockKeyPress = _commandFactory.CreateCommand(() =>
             {
@@ -391,10 +414,13 @@ namespace Gazaloglu.OnScreenKeyboard
 
             });
 
+            #endregion
+
+            #region Shift
+
             //Shift
             CmdShiftKeyPress = _commandFactory.CreateCommand(() =>
             {
-                Debug.WriteLine("Basıldı");
                 if (!IsShiftLocked)
                     _sim.Keyboard.KeyDown(VirtualKeyCode.SHIFT);
                 else
@@ -404,8 +430,16 @@ namespace Gazaloglu.OnScreenKeyboard
 
             }, ignorePostCommands: new[] { 0 } /* Ignore DeactivateShiftPostCommand */);
 
+
+            #endregion
+
+            #region Tab
+
             //Tab
             CmdTabKeyPress = _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.TAB));
+
+
+            #endregion
 
             //Space
             CmdSpaceKeyPress = _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.SPACE));
@@ -420,6 +454,8 @@ namespace Gazaloglu.OnScreenKeyboard
 
         }
 
+        #region KeySetsChanged
+
         private void KeySetsChanged()
         {
             OnPropertyChanged(nameof(KeySet1));
@@ -428,6 +464,8 @@ namespace Gazaloglu.OnScreenKeyboard
             OnPropertyChanged(nameof(KeySet4));
             OnPropertyChanged(nameof(KeySet5));
         }
+
+        #endregion
 
     }
 }

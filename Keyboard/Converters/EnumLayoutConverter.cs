@@ -8,9 +8,9 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
-using Gazaloglu.OnScreenKeyboard.Enums;
+using WPFTouchscreenKeyboard.Enums;
 
-namespace Gazaloglu.OnScreenKeyboard.Converters
+namespace WPFTouchscreenKeyboard.Converters
 {
     public class EnumLayoutConverter : IValueConverter
     {

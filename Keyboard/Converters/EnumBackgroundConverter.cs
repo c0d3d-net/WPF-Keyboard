@@ -6,19 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
-using Gazaloglu.OnScreenKeyboard.Enums;
+using WPFTouchscreenKeyboard.Enums;
 
-namespace Gazaloglu.OnScreenKeyboard.Converters
+namespace WPFTouchscreenKeyboard.Converters
 {
     class EnumBackgroundConverter : IValueConverter
     {
 
         public Dictionary<LayoutType, object> BackgroundMap = new Dictionary<LayoutType, object>
         {
-            [LayoutType.Initial] = new BitmapImage(new Uri("pack://application:,,/Gazaloglu.OnScreenKeyboard;component/Images/layout.png", UriKind.RelativeOrAbsolute)),
-            [LayoutType.Capital] = new BitmapImage(new Uri("pack://application:,,/Gazaloglu.OnScreenKeyboard;component/Images/capitalLayout.png", UriKind.RelativeOrAbsolute)),
-            [LayoutType.Shift]   = new BitmapImage(new Uri("pack://application:,,/Gazaloglu.OnScreenKeyboard;component/Images/shiftLayout.png", UriKind.RelativeOrAbsolute)),
-            [LayoutType.Numeric] = new BitmapImage(new Uri("pack://application:,,/Gazaloglu.OnScreenKeyboard;component/Images/numberLayout.png", UriKind.RelativeOrAbsolute)),
+            [LayoutType.Initial] = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/layout.png", UriKind.RelativeOrAbsolute)),
+            [LayoutType.Capital] = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/capitalLayout.png", UriKind.RelativeOrAbsolute)),
+            [LayoutType.Shift]   = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/shiftLayout.png", UriKind.RelativeOrAbsolute)),
+            [LayoutType.Numeric] = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/numberLayout.png", UriKind.RelativeOrAbsolute)),
 
         };
 

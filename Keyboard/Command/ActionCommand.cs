@@ -7,10 +7,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Gazaloglu.OnScreenKeyboard.Command
+namespace WPFTouchscreenKeyboard.Command
 {
     public class ActionCommand : ICommand
     {
@@ -25,12 +26,8 @@ namespace Gazaloglu.OnScreenKeyboard.Command
 
         public ActionCommand(Action action, Func<object, bool> canExecute,int[] ignorePreCommands,int[] ignorePostCommands)
         {
-            if (action != null)
-                _action = action;
-            else
-                throw new ArgumentNullException(nameof(action));
-
             _canExecute = canExecute ?? (p => true);
+            _action = action;
 
             _ignorePostCommands = ignorePostCommands;
             _ignorePreCommands = ignorePreCommands;
@@ -44,6 +41,9 @@ namespace Gazaloglu.OnScreenKeyboard.Command
 
         public void Execute(object parameter)
         {
+            if (_action == null)
+                return;
+
             //Pre commands
             if (PreCommands.Count > 0)
             {
