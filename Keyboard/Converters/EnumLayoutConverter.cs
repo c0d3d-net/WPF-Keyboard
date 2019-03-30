@@ -12,10 +12,10 @@ using WPFTouchscreenKeyboard.Enums;
 
 namespace WPFTouchscreenKeyboard.Converters
 {
-    public class EnumLayoutConverter : IValueConverter
+    class EnumLayoutConverter : IValueConverter
     {
         static readonly InitialLayout _initialLayout = new InitialLayout();
-        static readonly NumericLayout _numericLayout = new NumericLayout();
+        static readonly NumericKeyboard _NumericKeyboard = new NumericKeyboard();
 
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -26,7 +26,7 @@ namespace WPFTouchscreenKeyboard.Converters
             LayoutType type = (LayoutType)value;
 
             if (type == LayoutType.Numeric)
-                return _numericLayout;
+                return _NumericKeyboard;
 
             return _initialLayout;
         }

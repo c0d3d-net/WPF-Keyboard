@@ -44,16 +44,29 @@
                         <ColumnDefinition Width="339*"/>
                         <ColumnDefinition Width="59*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Background="#EEE"
+
+                    <StackPanel>
+                        <TextBox Background="#EEE"
                              TextAlignment="Center" 
                              FontSize="36"
+                             Text="Only numeric buttons are allowed"
+                             onScreenKeyboard:KeyboardControl.AllowOnlyNumericButtons="True"
                              Margin="5 15"/>
+
+                        <TextBox Background="#EEE"
+                             TextAlignment="Center" 
+                             FontSize="36"
+                             Text="All buttons are allowed"
+                             Margin="5 15"/>
+                    </StackPanel>
 
                     <Button Content="Click here to get focus"
                             Grid.Column="1"
                             TabIndex="0"
                             Margin="10 15"/>
                 </Grid>
+
+
             </StackPanel>
 
         </Grid>

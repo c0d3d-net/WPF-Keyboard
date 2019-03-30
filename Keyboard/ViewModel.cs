@@ -21,7 +21,7 @@ using WPFTouchscreenKeyboard.Enums;
 
 namespace WPFTouchscreenKeyboard
 {
-    public class ViewModel : INotifyPropertyChanged
+    class ViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
 
@@ -44,7 +44,8 @@ namespace WPFTouchscreenKeyboard
         private LayoutType _currentLayout;
 
         private Visibility _keyboardVisibility;
-
+        private bool _onlyNumericLayout;
+        
 
         //KeySets
         private readonly List<ICommand> _keySet1;
@@ -77,6 +78,23 @@ namespace WPFTouchscreenKeyboard
         #endregion
 
         #region PublicMembers
+
+        #region OnlyNumericButtons
+
+
+        public bool OnlyNumericLayout
+        {
+            get => _onlyNumericLayout;
+            set
+            {
+                _onlyNumericLayout = value;
+
+                CurrentLayout = value ? LayoutType.Numeric : LayoutType.Initial;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
 
         #region KeyboardVisibility
 
@@ -349,7 +367,7 @@ namespace WPFTouchscreenKeyboard
                 _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.NUMPAD8)),
                 _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.NUMPAD9)),
                 _commandFactory.CreateCommand(() => _sim.Keyboard.TextEntry("000")),
-                _commandFactory.CreateCommand(() => CurrentLayout = LayoutType.Initial),
+                _commandFactory.CreateCommand(() => CurrentLayout = LayoutType.Initial, canExecute: o=> !OnlyNumericLayout),
                 _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.NUMPAD0)),
                 _commandFactory.CreateCommand(() => _sim.Keyboard.TextEntry(".")),
                 _commandFactory.CreateCommand(() => _sim.Keyboard.KeyPress(VirtualKeyCode.RETURN))

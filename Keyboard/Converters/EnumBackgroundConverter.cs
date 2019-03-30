@@ -12,8 +12,7 @@ namespace WPFTouchscreenKeyboard.Converters
 {
     class EnumBackgroundConverter : IValueConverter
     {
-
-        public Dictionary<LayoutType, object> BackgroundMap = new Dictionary<LayoutType, object>
+        readonly Dictionary<LayoutType, object> BackgroundMap = new Dictionary<LayoutType, object>
         {
             [LayoutType.Initial] = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/layout.png", UriKind.RelativeOrAbsolute)),
             [LayoutType.Capital] = new BitmapImage(new Uri("pack://application:,,/WPFTouchscreenKeyboard;component/Images/capitalLayout.png", UriKind.RelativeOrAbsolute)),

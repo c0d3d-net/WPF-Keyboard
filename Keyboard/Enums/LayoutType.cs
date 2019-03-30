@@ -7,7 +7,7 @@
 
 namespace WPFTouchscreenKeyboard.Enums
 {
-    public enum LayoutType
+    enum LayoutType
     {
         Initial, 
         Numeric,

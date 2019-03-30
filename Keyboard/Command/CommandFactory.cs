@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace WPFTouchscreenKeyboard.Command
 {
-    class CommandFactory : ICommandFactory
+    internal class CommandFactory : ICommandFactory
     {
   
         public List<Action> PreCommands { get; set; }
@@ -29,7 +29,7 @@ namespace WPFTouchscreenKeyboard.Command
 
         }
 
-        public CommandFactory()
+        internal CommandFactory()
         {
             PreCommands  =  new List<Action>();
             PostCommands =  new List<Action>();

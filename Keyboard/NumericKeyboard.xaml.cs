@@ -10,11 +10,11 @@ using System.Windows.Controls;
 namespace WPFTouchscreenKeyboard
 {
     /// <summary>
-    /// Interaction logic for NumericLayout.xaml
+    /// Interaction logic for NumericKeyboard.xaml
     /// </summary>
-    partial class NumericLayout : UserControl
+    partial class NumericKeyboard : UserControl
     {
-        public NumericLayout()
+        public NumericKeyboard()
         {
             InitializeComponent();
         }

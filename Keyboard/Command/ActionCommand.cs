@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace WPFTouchscreenKeyboard.Command
 {
-    public class ActionCommand : ICommand
+    internal class ActionCommand : ICommand
     {
         private readonly Action _action;
         private readonly Func<object, bool> _canExecute;
